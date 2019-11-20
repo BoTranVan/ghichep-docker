@@ -1,0 +1,71 @@
+version: '2.0'
+services:
+  senlin-api:
+    ports:
+      - 8777:8777
+    image: senlin
+    privileged: true
+    restart: always
+    volumes:
+      - /etc/senlin:/etc/senlin
+      - /var/log/senlin:/var/log/senlin
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      PROCESS: api
+      AUTH_URL: http://ip_address:5000/v3
+      MEMCACHED_SERVERS: ip_address:11211
+      TRANSPORT_URL: rabbit://openstack:password@ip_address
+      DB_PASSWD: password
+      DB_HOST: ip_address
+      SENLIN_PASS: password
+
+senlin-engine:
+  image: senlin
+  restart: always
+  privileged: true
+  volumes:
+    - /etc/senlin:/etc/senlin
+    - /var/log/senlin:/var/log/senlin
+    - /etc/localtime:/etc/localtime:ro
+  environment:
+    PROCESS: engine
+    AUTH_URL: http://ip_address:5000/v3
+    MEMCACHED_SERVERS: ip_address:11211
+    TRANSPORT_URL: rabbit://openstack:password@ip_address
+    DB_PASSWD: password
+    DB_HOST: ip_address
+    SENLIN_PASS: password
+
+  senlin-health-manager:
+    image: senlin
+    restart: always
+    privileged: true
+    volumes:
+      - /etc/senlin:/etc/senlin
+      - /var/log/senlin:/var/log/senlin
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      PROCESS: health-manager
+      AUTH_URL: http://ip_address:5000/v3
+      MEMCACHED_SERVERS: ip_address:11211
+      TRANSPORT_URL: rabbit://openstack:password@ip_address
+      DB_PASSWD: password
+      DB_HOST: ip_address
+      SENLIN_PASS: password
+
+  senlin-conductor:
+    image: senlin
+    restart: always
+    privileged: true
+    volumes:
+      - /etc/senlin:/etc/senlin
+      - /var/log/senlin:/var/log/senlin
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      PROCESS: conductor
+      AUTH_URL: http://ip_address:5000/v3
+      MEMCACHED_SERVERS: ip_address:11211
+      TRANSPORT_URL: rabbit://openstack:password@ip_address
+      DB_PASSWD: password
+      DB_HOST: ip_address
+      SENLIN_PASS: password

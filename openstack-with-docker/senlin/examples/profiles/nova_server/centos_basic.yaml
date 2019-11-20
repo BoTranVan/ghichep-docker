@@ -1,0 +1,14 @@
+type: os.nova.server
+version: 1.0
+properties:
+  name: nova_server
+  flavor: 5f4dc560-daca-423b-b523-0fc70b8c3fe4
+  image: d6c76c7e-f72a-4951-b735-bf0a6fdba05b
+  key_name: ministry-key
+  networks:
+   - network: 6b5126da-a4f2-4d10-8968-8b0aba626533 
+  metadata:
+    test_key: ministry-key
+  user_data: |
+    #!/bin/sh
+    echo 'hello, world' > /tmp/test_file

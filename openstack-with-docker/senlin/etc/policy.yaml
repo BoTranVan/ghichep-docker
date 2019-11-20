@@ -1,0 +1,218 @@
+#
+"context_is_admin": "role:admin"
+
+#
+"deny_everybody": "!"
+
+# Show build information
+# GET  /v1/build-info
+"build_info:build_info": ""
+
+# List profile types
+# GET  /v1/profile-types
+"profile_types:index": ""
+
+# Show profile type details
+# GET  /v1/profile-types/{profile_type}
+"profile_types:get": ""
+
+# List profile type operations
+# GET  /v1/profile-types/{profile_type}/ops
+"profile_types:ops": ""
+
+# List policy types
+# GET  /v1/policy-types
+"policy_types:index": ""
+
+# Show policy type details
+# GET  /v1/policy-types/{policy_type}
+"policy_types:get": ""
+
+# List clusters
+# GET  /v1/clusters
+"clusters:index": ""
+
+# Create cluster
+# POST  /v1/clusters
+"clusters:create": ""
+
+# Delete cluster
+# DELETE  /v1/clusters/{cluster_id}
+"clusters:delete": ""
+
+# Show cluster details
+# GET  /v1/clusters/{cluster_id}
+"clusters:get": ""
+
+# Perform specified action on a cluster.
+# POST  /v1/clusters/{cluster_id}/actions
+"clusters:action": ""
+
+# Update cluster
+# PATCH  /v1/clusters/{cluster_id}
+"clusters:update": ""
+
+# Collect Attributes Across a Cluster
+# GET  v1/clusters/{cluster_id}/attrs/{path}
+"clusters:collect": ""
+
+# Perform an Operation on a Cluster
+# POST  /v1/clusters/{cluster_id}/ops
+"clusters:operation": ""
+
+# List profiles
+# GET  /v1/profiles
+"profiles:index": ""
+
+# Create profile
+# POST  /v1/profiles
+"profiles:create": ""
+
+# Show profile details
+# GET  /v1/profiles/{profile_id}
+"profiles:get": ""
+
+# Delete profile
+# DELETE  /v1/profiles/{profile_id}
+"profiles:delete": ""
+
+# Update profile
+# PATCH  /v1/profiles/{profile_id}
+"profiles:update": ""
+
+# Validate profile
+# POST  /v1/profiles/validate
+"profiles:validate": ""
+
+# List nodes
+# GET  /v1/nodes
+"nodes:index": ""
+
+# Create node
+# GET  /v1/nodes
+"nodes:create": ""
+
+# Adopt node
+# POST  /v1/nodes/adopt
+"nodes:adopt": ""
+
+# Adopt node (preview)
+# POST  /v1/nodes/adopt-preview
+"nodes:adopt_preview": ""
+
+# Show node details
+# GET  /v1/nodes/{node_id}
+"nodes:get": ""
+
+# Perform specified action on a Node.
+# POST  /v1/nodes/{node_id}/actions
+"nodes:action": ""
+
+# Update node
+# PATCH  /v1/nodes/{node_id}
+"nodes:update": ""
+
+# Delete node
+# DELETE  /v1/nodes/{node_id}
+"nodes:delete": ""
+
+# Perform an Operation on a Node
+# POST  /v1/nodes/{node_id}/ops
+"nodes:operation": ""
+
+# List policies
+# GET  /v1/policies
+"policies:index": ""
+
+# Create policy
+# POST  /v1/policies
+"policies:create": ""
+
+# Show policy details
+# GET  /v1/policies/{policy_id}
+"policies:get": ""
+
+# Update policy
+# PATCH  /v1/policies/{policy_id}
+"policies:update": ""
+
+# Delete policy
+# DELETE  /v1/policies/{policy_id}
+"policies:delete": ""
+
+# Validate policy.
+# POST  /v1/policies/validate
+"policies:validate": ""
+
+# List cluster policies
+# GET  /v1/clusters/{cluster_id}/policies
+"cluster_policies:index": ""
+
+# Attach a Policy to a Cluster
+# POST  /v1/clusters/{cluster_id}/actions
+"cluster_policies:attach": ""
+
+# Detach a Policy from a Cluster
+# POST  /v1/clusters/{cluster_id}/actions
+"cluster_policies:detach": ""
+
+# Update a Policy on a Cluster
+# POST  /v1/clusters/{cluster_id}/actions
+"cluster_policies:update": ""
+
+# Show cluster_policy details
+# GET  /v1/clusters/{cluster_id}/policies/{policy_id}
+"cluster_policies:get": ""
+
+# List receivers
+# GET  /v1/receivers
+"receivers:index": ""
+
+# Create receiver
+# POST  /v1/receivers
+"receivers:create": ""
+
+# Show receiver details
+# GET  /v1/receivers/{receiver_id}
+"receivers:get": ""
+
+# Update receiver
+# PATCH  /v1/receivers/{receiver_id}
+"receivers:update": ""
+
+# Delete receiver
+# DELETE  /v1/receivers/{receiver_id}
+"receivers:delete": ""
+
+# Notify receiver
+# POST  /v1/receivers/{receiver_id}/notify
+"receivers:notify": ""
+
+# List actions
+# GET  /v1/actions
+"actions:index": ""
+
+# Show action details
+# GET  /v1/actions/{action_id}
+"actions:get": ""
+
+# Update action
+# PATCH  /v1/actions/{action_id}
+"actions:update": ""
+
+# List events
+# GET  /v1/events
+"events:index": ""
+
+# Show event details
+# GET  /v1/events/{event_id}
+"events:get": ""
+
+# Trigger webhook action
+# POST  /v1/webhooks/{webhook_id}/trigger
+"webhooks:trigger": ""
+
+# List services
+# GET  /v1/services
+"services:index": "role:admin"
+
