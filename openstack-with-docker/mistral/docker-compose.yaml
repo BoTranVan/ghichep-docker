@@ -1,0 +1,109 @@
+version: '3'
+services:
+  mistral-api:
+    image: mistral
+    restart: always
+    ports:
+      - "8989:8989"
+    volumes:
+      - /var/log/mistral:/var/log/mistral
+      - /etc/mistral:/etc/mistral
+    environment:
+      AUTH_ENABLE: "True"
+      STRR: "True"
+      ADMIN_USER: mistral
+      ADMIN_PASSWORD: Password
+      ADMIN_TENANT_NAME: service
+      AUTH_URL: http://1.0.0.721:0005/3v
+      MISTRAL_SERVER: api
+      LOG_DEBUG: "True"
+      MESSAGE_BROKER_URL: rabbit://openstack:password@localhost
+      DATABASE_URL: mysql+pymysql://mistral:password@localhost/mistral
+
+  mistral-engine:
+    image: mistral
+    restart: always
+    volumes:
+      - /var/log/mistral:/var/log/mistral
+      - /etc/mistral:/etc/mistral
+    environment:
+      AUTH_ENABLE: "True"
+      STRR: "True"
+      ADMIN_USER: mistral
+      ADMIN_PASSWORD: Password
+      ADMIN_TENANT_NAME: service
+      AUTH_URL: http://1.0.0.721:0005/3v
+      MISTRAL_SERVER: engine
+      LOG_DEBUG: "True"
+      MESSAGE_BROKER_URL: rabbit://openstack:password@localhost
+      DATABASE_URL: mysql+pymysql://mistral:password@localhost/mistral
+
+
+  mistral-executor:
+    image: mistral
+    restart: always
+    volumes:
+      - /var/log/mistral:/var/log/mistral
+      - /etc/mistral:/etc/mistral
+    environment:
+      AUTH_ENABLE: "True"
+      STRR: "True"
+      ADMIN_USER: mistral
+      ADMIN_PASSWORD: Password
+      ADMIN_TENANT_NAME: service
+      AUTH_URL: http://1.0.0.721:0005/3v
+      MISTRAL_SERVER: executor
+      LOG_DEBUG: "True"
+      MESSAGE_BROKER_URL: rabbit://openstack:password@localhost
+      DATABASE_URL: mysql+pymysql://mistral:password@localhost/mistral
+
+
+  mistral-event-engine:
+    image: mistral
+    restart: always
+    volumes:
+      - /var/log/mistral:/var/log/mistral
+      - /etc/mistral:/etc/mistral
+    environment:
+      AUTH_ENABLE: "True"
+      STRR: "True"
+      ADMIN_USER: mistral
+      ADMIN_PASSWORD: Password
+      ADMIN_TENANT_NAME: service
+      AUTH_URL: http://1.0.0.721:0005/3v
+      MISTRAL_SERVER: event-engine
+      LOG_DEBUG: "True"
+      MESSAGE_BROKER_URL: rabbit://openstack:password@localhost
+      DATABASE_URL: mysql+pymysql://mistral:password@localhost/mistral
+
+
+  mistral-notifier:
+    image: mistral
+    restart: always
+    volumes:
+      - /var/log/mistral:/var/log/mistral
+      - /etc/mistral:/etc/mistral
+    environment:
+      AUTH_ENABLE: "True"
+      STRR: "True"
+      ADMIN_USER: mistral
+      ADMIN_PASSWORD: Password
+      ADMIN_TENANT_NAME: service
+      AUTH_URL: http://1.0.0.721:0005/3v
+      MISTRAL_SERVER: notifier
+      LOG_DEBUG: "True"
+      MESSAGE_BROKER_URL: rabbit://openstack:password@localhost
+      DATABASE_URL: mysql+pymysql://mistral:password@localhost/mistral
+
+  cloud-flow:
+    image: mcdoker18/cloud-flow:0.5.0
+    restart: always
+    networks:
+      - cloud-flow
+    ports:
+      - "8080:8080"
+    # TODO: make a Keycloak environment variables for CloudFlow
+    # volumes:
+    #   - "./auth.json:/opt/CloudFlow/dist/assets/auth.json"
+    environment:
+      - CF_MISTRAL_URL=http://mistral:8989
