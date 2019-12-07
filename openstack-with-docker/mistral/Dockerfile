@@ -1,4 +1,4 @@
-FROM base:rocky
+FROM base:train
 MAINTAINER botv96@gmail.com
 LABEL Description="Workflow Services"
 
@@ -11,9 +11,9 @@ RUN apt update && \
     pip install PyMySQL 
 
 
-# RUN git clone https://opendev.org/openstack/mistral.git /opt/mistral && \
-#     cd /opt/mistral && \
-#     pip install -e .
+RUN git clone https://opendev.org/openstack/mistral.git /opt/mistral && \
+    cd /opt/mistral && \
+    pip install -e .
 
 COPY mistral/requirements.txt /opt/
 WORKDIR /opt
