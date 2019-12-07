@@ -11,14 +11,11 @@ RUN apt update && \
     pip install PyMySQL 
 
 
-RUN git clone https://opendev.org/openstack/mistral.git /opt/mistral && \
-    cd /opt/mistral && \
-    pip install -e .
+RUN git clone https://opendev.org/openstack/mistral.git /opt/mistral
 
-COPY mistral/requirements.txt /opt/
+COPY /opt/mistral/requirements.txt /opt/
 WORKDIR /opt
 RUN pip install -r requirements.txt
-COPY mistral /opt/mistral
 WORKDIR /opt/mistral
 RUN pip install -e .
 
